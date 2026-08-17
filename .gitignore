@@ -1,0 +1,4 @@
+.env
+honeygain_checkin_log.txt
+node_modules/
+*.log
