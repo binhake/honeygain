@@ -26,4 +26,6 @@ jobs:
           HONEYGAIN_EMAIL: ${{ secrets.HONEYGAIN_EMAIL }}
           HONEYGAIN_PASSWORD: ${{ secrets.HONEYGAIN_PASSWORD }}
           HONEYGAIN_TOKEN: ${{ secrets.HONEYGAIN_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: npm run claim

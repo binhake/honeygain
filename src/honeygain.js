@@ -1,7 +1,20 @@
 const config = require('./config');
 const { writeLog } = require('./logger');
+const { sendTelegramNotification } = require('./telegram');
 
 let currentToken = config.token;
+
+/**
+ * Masks an email string for privacy (e.g. bi***ee@gmail.com).
+ * @param {string} email 
+ * @returns {string} Obfuscated email
+ */
+function maskEmail(email) {
+    if (!email || !email.includes('@')) return 'N/A';
+    const [name, domain] = email.split('@');
+    if (name.length <= 2) return `${name}***@${domain}`;
+    return `${name.substring(0, 2)}***${name.substring(name.length - 1)}@${domain}`;
+}
 
 /**
  * Authenticates with Honeygain API to obtain a fresh JWT access token.
@@ -112,7 +125,16 @@ async function checkAndClaim() {
         const claimResData = await makeRequest('POST', 'https://dashboard.honeygain.com/api/v1/contest_winnings');
         
         if (claimResData && claimResData.data && claimResData.data.credits) {
-            writeLog(`Success! Claimed ${claimResData.data.credits} credits from daily Lucky Pot.`);
+            const credits = claimResData.data.credits;
+            writeLog(`Success! Claimed ${credits} credits from daily Lucky Pot.`);
+            
+            const msg = `🍯 <b>Honeygain Lucky Pot Claimed!</b>\n\n` +
+                        `👤 <b>Account:</b> <code>${maskEmail(config.email)}</code>\n` +
+                        `🎁 <b>Credits Earned:</b> <code>+${credits} credits</code>\n` +
+                        `📊 <b>Progress:</b> <code>${progress_bytes}/${max_bytes} bytes</code>\n\n` +
+                        `<i>Honeygain Auto Pot Claimer by Binhake ツ</i>`;
+            await sendTelegramNotification(msg);
+
             return true;
         } else {
             writeLog(`Opened pot successfully but credit amount unknown: ${JSON.stringify(claimResData)}`);

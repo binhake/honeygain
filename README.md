@@ -16,6 +16,7 @@ An automated, lightweight 24/7 daily Lucky Pot claimer script for Honeygain. Sup
 
 - 🤖 **24/7 Auto Claim**: Automatically checks bandwidth progress and claims daily Lucky Pot rewards.
 - ☁️ **GitHub Actions Cloud Mode**: Runs automatically on GitHub Cloud every day — zero computer uptime required!
+- 📲 **Telegram Notifications**: Get instant push notifications on your phone via Telegram Bot whenever a Lucky Pot is claimed.
 - 🔒 **Secure Configuration**: Uses `.env` or GitHub Secrets to protect your account credentials.
 - ⚡ **Zero Dependencies**: Pure Node.js standard modules — no external `npm` packages required.
 - 🕒 **Clean Logging**: Timestamped output (`DD/MM/YYYY HH:mm:ss`) with visual cycle separators and log file persistence.
@@ -35,9 +36,11 @@ Run 100% free on GitHub servers without keeping your PC powered on:
 
 1. **Fork or Clone** this repository to your GitHub account.
 2. Open your repository on GitHub and navigate to **Settings** > **Secrets and variables** > **Actions**.
-3. Click **New repository secret** and add two secrets:
+3. Click **New repository secret** and add two required secrets (and optional Telegram secrets):
    - `HONEYGAIN_EMAIL`: Your Honeygain account email.
    - `HONEYGAIN_PASSWORD`: Your Honeygain account password.
+   - *(Optional)* `TELEGRAM_BOT_TOKEN`: Your Telegram Bot API token.
+   - *(Optional)* `TELEGRAM_CHAT_ID`: Your Telegram Chat ID.
 4. **Done!** The workflow automatically triggers every day at **07:05 AM (UTC+7)**.
    - *Optional:* You can manually trigger a claim test anytime under the **Actions** tab by clicking **Honeygain Auto Claimer** > **Run workflow**.
 
@@ -56,11 +59,16 @@ Copy `.env.example` to `.env`:
 ```bash
 cp .env.example .env
 ```
-Open `.env` and fill in your Honeygain email and password:
+Open `.env` and fill in your details:
 ```env
+# Honeygain Account Configuration
 HONEYGAIN_EMAIL=your_email@example.com
 HONEYGAIN_PASSWORD=your_password_here
 HONEYGAIN_TOKEN=
+
+# Telegram Notification Configuration (Optional)
+TELEGRAM_BOT_TOKEN=your_bot_token_here
+TELEGRAM_CHAT_ID=your_chat_id_here
 ```
 
 ### 3. Run the application
@@ -71,6 +79,16 @@ npm start
 ```bash
 node main
 ```
+
+---
+
+## 📱 Setting Up Telegram Notifications (Optional)
+
+Get instant push notifications when your daily Lucky Pot is claimed:
+
+1. **Get Bot Token**: Open Telegram, search for [@BotFather](https://t.me/BotFather), send `/newbot`, and follow the steps to create a bot. Copy the HTTP API token.
+2. **Get Your Chat ID**: Open Telegram, search for [@userinfobot](https://t.me/userinfobot), and press `/start` to get your `Id`.
+3. Add `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` to your `.env` file or GitHub Repository Secrets.
 
 ---
 
@@ -89,7 +107,8 @@ Honeygain/
 └── src/
     ├── action.js          # Single-run execution entry point for GitHub Actions
     ├── config.js          # Environment loader & configuration settings
-    ├── logger.js          # Formatted timestamp logger & console banner
     ├── honeygain.js       # Honeygain API authentication & claim logic
-    └── scheduler.js       # 24/7 background scheduler and interval timer
+    ├── logger.js          # Formatted timestamp logger & console banner
+    ├── scheduler.js       # 24/7 background scheduler and interval timer
+    └── telegram.js        # Telegram Bot API notification module
 ```

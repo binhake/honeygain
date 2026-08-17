@@ -30,6 +30,8 @@ const config = {
     email: process.env.HONEYGAIN_EMAIL || '',
     password: process.env.HONEYGAIN_PASSWORD || '',
     token: process.env.HONEYGAIN_TOKEN || '',
+    telegramBotToken: process.env.TELEGRAM_BOT_TOKEN || '',
+    telegramChatId: process.env.TELEGRAM_CHAT_ID || '',
     logFile: path.join(__dirname, '..', 'honeygain_checkin_log.txt'),
     checkIntervalMs: 30 * 60 * 1000, // 30 minutes
     retryIntervalMs: 15 * 60 * 1000  // 15 minutes
