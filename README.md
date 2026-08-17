@@ -1,4 +1,4 @@
-# 🐝 Honeygain Auto Pot Claimer
+<h1 align="center">🐝 Honeygain Auto Pot Claimer</h1>
 
 <p align="center">
   <a href="https://nodejs.org/" target="_blank"><img src="https://img.shields.io/badge/Node.js-%3E%3D18.0.0-brightgreen.svg" alt="Node Version"></a>
