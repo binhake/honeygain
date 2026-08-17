@@ -1,0 +1,21 @@
+{
+    "name": "honeygain-auto-pot",
+    "version": "1.0.0",
+    "description": "Automatic daily Lucky Pot claimer for Honeygain",
+    "main": "main.js",
+    "scripts": {
+        "start": "node main"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "keywords": [
+        "honeygain",
+        "pot",
+        "lucky-pot",
+        "autoclaim",
+        "bot"
+    ],
+    "author": "Binhake ツ",
+    "license": "MIT"
+}
