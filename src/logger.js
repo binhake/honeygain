@@ -1,5 +1,6 @@
 const fs = require('fs');
 const config = require('./config');
+const pkg = require('../package.json');
 
 /**
  * Formats current date and time to DD/MM/YYYY HH:mm:ss format.
@@ -40,7 +41,7 @@ function writeLog(message) {
 function printBanner() {
     console.log(`
 ======================================================
-        Honeygain Auto Pot Claimer v1.0.0
+        Honeygain Auto Pot Claimer v${pkg.version}
         Author: Binhake ツ
         GitHub: https://github.com/binhake/honeygain
 ======================================================
