@@ -1,6 +1,6 @@
 {
     "name": "honeygain-auto-pot",
-    "version": "1.0.0",
+    "version": "1.2.0",
     "description": "Automatic daily Lucky Pot claimer for Honeygain",
     "main": "main.js",
     "scripts": {

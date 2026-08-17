@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://nodejs.org/" target="_blank"><img src="https://img.shields.io/badge/Node.js-%3E%3D18.0.0-brightgreen.svg" alt="Node Version"></a>
   <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-blue.svg" alt="Platform">
-  <a href="https://github.com/binhake/honeygain/releases/tag/v1.0.0"><img src="https://img.shields.io/badge/Release-v1.0.0-orange.svg" alt="Release"></a>
+  <a href="https://github.com/binhake/honeygain/releases/tag/v1.2.0"><img src="https://img.shields.io/badge/Release-v1.2.0-orange.svg" alt="Release"></a>
 </p>
 
 An automated, lightweight 24/7 daily Lucky Pot claimer script for Honeygain. Supports running locally, in background, or 100% free on GitHub Actions Cloud.
